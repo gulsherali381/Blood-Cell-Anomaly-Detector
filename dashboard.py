@@ -3,7 +3,7 @@ import streamlit as st
 import requests
 from datetime import datetime
 
-API_url = "http://127.0.0.1:8000"
+API_url = "https://gulsherali381--blood-cell-anomaly-detector-fastapi-app.modal.run"
 
 st.set_page_config(
     page_title="Blood Cell Anomaly Detector",
