@@ -1,0 +1,141 @@
+body {
+    background-color: #010002;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #8715DB;
+}
+
+.hero-box {
+    background: linear-gradient(135deg, #1a0530, #8715DB);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.hero-box h1 {
+    color: white;
+    margin: 0;
+}
+
+.hero-box p {
+    color: #dcd0ea;
+}
+
+.disclaimer-box {
+    background-color: #1a1a1a;
+    border: 1px solid #8715DB;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: #888;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.tab-btn.active {
+    color: #8715DB;
+    border-bottom: 2px solid #8715DB;
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.two-column {
+    display: flex;
+    gap: 30px;
+}
+
+.left-col, .right-col {
+    flex: 1;
+}
+
+label {
+    color: #8715DB;
+    font-weight: 600;
+    display: block;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #1f1f1f;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #8715DB;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6d10ae;
+}
+
+.result-card {
+    background-color: #1a1a1a;
+    border: 2px solid #8715DB;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #1a0530;
+    color: #8715DB;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}

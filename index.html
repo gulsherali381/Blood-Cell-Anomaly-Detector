@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blood Cell Anomaly Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PapaParse CDN for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- Chart.js CDN for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="hero-box">
+        <h1>🧬 Cellular Irregularity Scanner</h1>
+        <p>AI-Powered Blood Cell Anomaly screening using Isolation Forest</p>
+    </div>
+
+    <div class="disclaimer-box">
+        ⚠️ <b>Disclaimer:</b> This tool is for research/educational purposes only and is not a medical diagnosis. Please consult a qualified lab professional for any medical decisions.
+    </div>
+
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="showTab(event, 'scan')">🧪 Scan</button>
+        <button class="tab-btn" onclick="showTab(event, 'insights')">📈 Insights</button>
+        <button class="tab-btn" onclick="showTab(event, 'bulk')">📦 Bulk Scan</button>
+        <button class="tab-btn" onclick="showTab(event, 'log')">🗂️ Log</button>
+    </div>
+
+    <!-- TAB 1: SCAN -->
+    <div id="scan" class="tab-content active">
+        <div class="two-column">
+            <div class="left-col">
+                <h2>🔬 Patient Information</h2>
+                <div class="two-column">
+                    <div>
+                        <label>Patient ID</label>
+                        <input type="text" id="patient_id" value="MRN-2026-001">
+                        <label>Patient Full Name</label>
+                        <input type="text" id="patient_name" value="John Doe">
+                    </div>
+                    <div>
+                        <label>Age</label>
+                        <input type="number" id="patient_age" value="32">
+                        <label>Gender</label>
+                        <select id="patient_gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr style="border-color: #333; margin: 20px 0;">
+                <h2>🔬 Cell Feature Input</h2>
+
+                <label>Cell Type</label>
+                <select id="cell_type">
+                    <option>Artefact</option>
+                    <option>Basophil</option>
+                    <option>Blast_Cell</option>
+                    <option>Elliptocyte</option>
+                    <option>Eosinophil</option>
+                    <option>Hypersegmented_Neutrophil</option>
+                    <option>Lymphocyte</option>
+                    <option>Monocyte</option>
+                    <option selected>Neutrophil</option>
+                    <option>Normal_RBC</option>
+                    <option>Platelet</option>
+                    <option>Prolymphocyte</option>
+                    <option>Reactive_Lymphocyte</option>
+                    <option>Schistocyte</option>
+                    <option>Sickle_Cell</option>
+                    <option>Smudge_Cell</option>
+                    <option>Spherocyte</option>
+                    <option>Target_Cell</option>
+                    <option>Toxic_Granulation</option>
+                </select>
+
+                <div class="two-column">
+                    <div>
+                        <label>Cell Diameter (um)</label>
+                        <input type="number" step="0.01" id="cell_diameter_um" value="10.0">
+                        <label>Nucleus Area %</label>
+                        <input type="number" step="0.01" id="nucleus_area_pct" value="50.0">
+                        <label>Chromatin Density</label>
+                        <input type="number" step="0.01" id="chromatin_density" value="0.4">
+                        <label>Cytoplasm Ratio</label>
+                        <input type="number" step="0.01" id="cytoplasm_ratio" value="0.4">
+                        <label>Circularity</label>
+                        <input type="number" step="0.01" id="circularity" value="0.8">
+                        <label>Eccentricity</label>
+                        <input type="number" step="0.01" id="eccentricity" value="0.4">
+                        <label>Granularity Score</label>
+                        <input type="number" step="0.01" id="granularity_score" value="2.0">
+                    </div>
+                    <div>
+                        <label>Lobularity Score</label>
+                        <input type="number" step="0.01" id="lobularity_score" value="3.0">
+                        <label>Membrane Smoothness</label>
+                        <input type="number" step="0.01" id="membrane_smoothness" value="0.8">
+                        <label>Cell Area (px)</label>
+                        <input type="number" id="cell_area_px" value="300">
+                        <label>Perimeter (px)</label>
+                        <input type="number" id="perimeter_px" value="60">
+                        <label>Mean Red</label>
+                        <input type="number" id="mean_r" value="200">
+                        <label>Mean Green</label>
+                        <input type="number" id="mean_g" value="150">
+                        <label>Mean Blue</label>
+                        <input type="number" id="mean_b" value="180">
+                        <label>Stain Intensity</label>
+                        <input type="number" step="0.01" id="stain_intensity" value="0.5">
+                    </div>
+                </div>
+
+                <label>Sensitivity Threshold: <span id="thresholdValue">0.10</span></label>
+                <input type="range" id="threshold" min="-0.2" max="0.2" step="0.01" value="0.10"
+                       oninput="document.getElementById('thresholdValue').innerText = this.value">
+
+                <button onclick="runScan()">🔍 Run Scan</button>
+            </div>
+
+            <div class="right-col">
+                <h2>📊 Scan Result</h2>
+                <div id="result">
+                    <p style="color: #888;">Run a scan to see results here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: INSIGHTS -->
+    <div id="insights" class="tab-content">
+        <h2>📈 Dataset Insights & Analytics</h2>
+        <div id="insightsResult" style="background-color: #1a1a1a; border: 2px solid #8715DB; border-radius: 12px; padding: 20px;">
+            <p style="color: #dcd0ea;">Loading dataset statistics...</p>
+        </div>
+    </div>
+
+    <!-- TAB 3: BULK SCAN -->
+    <div id="bulk" class="tab-content">
+        <h2>📦 Bulk Cell Scan</h2>
+        <input type="file" id="csvFile" accept=".csv" style="padding: 10px; background: #1a1a1a;">
+        <button onclick="runBulkScan()">Run Bulk Scan</button>
+        <div id="bulkResult"></div>
+    </div>
+
+    <!-- TAB 4: LOG -->
+    <div id="log" class="tab-content">
+        <h2>🗂️ Scan Log</h2>
+        <div id="logResult"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
