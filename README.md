@@ -42,7 +42,7 @@ The result is a tool that takes what was previously a manual, inconsistent proce
 
 ## 🚀 Live Application
 
-**Access the deployed app here:** [https://blood-cell-anomaly-detector.streamlit.app/](https://blood-cell-anomaly-detector.streamlit.app/)
+**Access the deployed app here:** [https://gulsherali381--blood-cell-anomaly-detector-fastapi-app.modal.run/)
 
 ---
 
