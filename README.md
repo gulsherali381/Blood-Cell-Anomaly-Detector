@@ -1,6 +1,6 @@
 # 🩸 Blood Cell Anomaly Detector
 
-An end-to-end machine learning application that automates the detection of abnormal blood cells from morphological and cellular feature data, using an unsupervised **Isolation Forest** model served through a **FastAPI** backend and an interactive **Streamlit** dashboard.
+An end-to-end machine learning application that automates the detection of abnormal blood cells from morphological and cellular feature data, using an unsupervised **Isolation Forest** model served through a **FastAPI** backend and an interactive **Custom UI** dashboard.
 
 **Live Application:** [https://gulsherali381--blood-cell-anomaly-detector-fastapi-app.modal.run/)
 
